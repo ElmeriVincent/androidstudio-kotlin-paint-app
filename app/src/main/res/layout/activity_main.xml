@@ -34,8 +34,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:background="@drawable/gray"
-            android:contentDescription="gray-default"/>
+            android:background="@drawable/black"
+            android:contentDescription="black-default"/>
 
         <Button
             android:id="@+id/clear"
@@ -47,5 +47,14 @@
             android:contentDescription="clear-default"/>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/paintBar">
+
+        <include layout="@layout/paint_view"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
