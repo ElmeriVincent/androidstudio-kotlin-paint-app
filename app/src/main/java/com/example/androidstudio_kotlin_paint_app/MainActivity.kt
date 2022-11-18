@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             currentColor(paintBrush.color)
         }
 
+        // clearing the screen.
         clearBtn.setOnClickListener{
             pathList.clear()
             colorList.clear()

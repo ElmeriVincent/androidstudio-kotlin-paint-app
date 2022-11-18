@@ -1,5 +1,6 @@
 package com.example.androidstudio_kotlin_paint_app
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -11,12 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.androidstudio_kotlin_paint_app.MainActivity.Companion.paintBrush
 import com.example.androidstudio_kotlin_paint_app.MainActivity.Companion.path
-import java.text.AttributedCharacterIterator.Attribute
 
 class PainView : View {
 
     //responsible for what is the height and width of the canvas to the parent layout.
-    var params : ViewGroup.LayoutParams? = null
+    private var params : ViewGroup.LayoutParams? = null
 
     companion object {
         var pathList = ArrayList<Path>()
@@ -48,9 +48,10 @@ class PainView : View {
     }
 
     // Getting the drawing finger input
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        var x = event.x
-        var y = event.y
+        val x = event.x
+        val y = event.y
 
         when(event.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -66,14 +67,14 @@ class PainView : View {
         }
         // Inform the non-ui threads that some changes have been done on the ui
         postInvalidate()
-        return false;
+        return false
     }
 
     // Drawing on the screen
     override fun onDraw(canvas: Canvas) {
 
         for(i in pathList.indices) {
-            paintBrush.setColor(colorList[i])
+            paintBrush.color = colorList[i]
             canvas.drawPath(pathList[i], paintBrush)
             invalidate() // informing non-ui threads about the changes on the ui
         }
